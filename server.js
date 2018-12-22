@@ -6,7 +6,7 @@ var request = require('request');
 
 var app = express();
 app.set('view engine', 'ejs');
-// app.use(express.static( "public" ));
+app.use(express.static( "public" ));
 app.get('/', (req, res) => {
     res.render('index');
 });
@@ -170,7 +170,7 @@ var upload = multer({storage: storage}).single('myFile');
                                     <div class="form">
                                     
                                     <form class="login-form">`);
-                        res.write(`<img src="${'./uploads/' + fileName}" />`);
+                        // res.write(`<img src="${'/uploads/' + fileName}" />`);
                         res.write(`File Name: ${fileName}`);
                         res.write(`<img src="/uploads/brokenwindow.jpg" />`);
                         res.write(`<h4>${JSON.parse(body).predictions[0].tagName.toUpperCase()}: ${(JSON.parse(body).predictions[0].probability*100)}%</h4>
